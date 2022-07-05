@@ -1,1 +1,13 @@
-<mxfile host="app.diagrams.net" modified="2022-07-05T05:04:55.244Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15" etag="jsXb2N6aHTCM8eL1dWUp" version="20.0.4" type="github"><diagram id="w3xWAHxM6hMif5GmvVi4" name="Page-1">jZTBctMwEIafxjNwCJPYTSBH7KRwoBfSgeGoWht7B0lrZLlO+vSsbCm26XSGSyx9+rWr1f5KkhX68sWKpn4gCSpJ1/KSZIckTT9t1/zrwXUE27vNCCqLckQzcMIXCDDsqzqU0C6Ejkg5bJawJGOgdAsmrKV+KTuTWmZtRAWvwKkU6jX9idLVoaz048S/AlZ1zLzZ7ccVLaI4VNLWQlI/Q9kxyQpL5MaRvhSg/N3Fexn33b+xejuYBeP+Z8OPX7uy3O/z7j7/foePD8KtilU6RnkWqgsFJ+lOcby85gS7yo8+a/FChlXvjquStAZbwvso43yTMsImgm9kQfszNG3nv5IUWX8X6Hx/NPCnGLvXcvfAdX5VSGywxRJNxTNQGFQtyCGGh9i1mvzUgW6GmGhKlCg740N3/keJJ87v1S7mhqEzlRE+jcI/nfgwq6SZChk65q7RBg4uw6U4rRhseNg6S7+hGArKDoYMK/MzKvUPahsxFJIdttPskRoGK+5Ylvc1Ojgx96l6fkTM6BnsWQ1uqVFKMMwsdUaCb+b6dkKW8cneNMTmZjN+nkB83fbKkrAhC8YMLzP6tJ9snq0Dq+cWj0IRnlZ1izy5jwfBgHE6GX1Ym/1bZMe/</diagram></mxfile>
+<mxfile host="app.diagrams.net" modified="2022-07-05T05:10:00.268Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15" etag="OxC47JCUrSbuMm6TmWMO" version="20.0.4" type="github">
+  <diagram id="w3xWAHxM6hMif5GmvVi4" name="Page-1">
+    <mxGraphModel dx="657" dy="504" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="VY6cc99BuFBR4iTMat-C-2" value="&lt;h1&gt;Amazon (E-commerce)&lt;/h1&gt;&lt;p&gt;1. User login&lt;/p&gt;&lt;p&gt;2. user search a product&lt;/p&gt;&lt;p&gt;3. delivery time&lt;/p&gt;&lt;p&gt;4. Cart having all selected product&lt;/p&gt;&lt;p&gt;5. checkout the cart and payment&lt;/p&gt;&lt;p&gt;6. view order&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Non Functional requirements :&lt;/p&gt;&lt;p&gt;1. All payment related services should be highly consistent&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="20" y="28" width="290" height="270" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
