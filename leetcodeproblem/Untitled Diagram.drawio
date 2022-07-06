@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-07-06T06:11:12.290Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15" etag="HrRnPLdsIwtny4T406Ii" version="20.0.4" type="github">
+<mxfile host="app.diagrams.net" modified="2022-07-06T06:32:41.462Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15" etag="Sc6Dy-uaBT9EClN6yTz4" version="20.0.4" type="github">
   <diagram id="w3xWAHxM6hMif5GmvVi4" name="Page-1">
     <mxGraphModel dx="1483" dy="608" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -201,35 +201,26 @@
         <mxCell id="Yt1-9T4JXmfCghfN-qr9-112" value="&lt;h1&gt;Solution&lt;/h1&gt;&lt;div&gt;1. Multiple type of devices&lt;/div&gt;&lt;div&gt;&amp;nbsp;- different device support different forms&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;	- different&lt;/span&gt;&amp;nbsp;dimension&lt;/div&gt;&lt;div&gt;&amp;nbsp;- bandwidth required to play the different videos&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Client &amp;nbsp;- Adaptive bit rate streaming&amp;nbsp;&lt;span style=&quot;white-space: pre;&quot;&gt;	&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;	try  to get high pixel if delay next&amp;nbsp;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;chunk it request with lower pixel&lt;/span&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="354" y="3310" width="216" height="220" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-113" value="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
-          <mxGeometry x="680" y="3920" width="80" height="80" as="geometry" />
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-124" value="&lt;h1&gt;Rate Limiter&lt;/h1&gt;&lt;div&gt;Why ---&lt;/div&gt;&lt;div&gt;1. Userexperience&amp;nbsp;&lt;/div&gt;&lt;div&gt;2. security issue (prevent dos)&lt;/div&gt;&lt;div&gt;3. Operation cost - auto scale in cloud&lt;/div&gt;&lt;div&gt;&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;How -&amp;nbsp;&lt;/div&gt;&lt;div&gt;1. User based rate limit - how many request per user over a window&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;2. Concurrent - how many concurrent session can be open&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;3. Location based Rate limiting - only from location get more request&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;4. Server based rate limit&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="60" y="3711" width="340" height="289" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-123" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="Yt1-9T4JXmfCghfN-qr9-114" target="Yt1-9T4JXmfCghfN-qr9-121">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-125" value="&lt;h1&gt;Sol - Token Bucket&lt;/h1&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;1. Number of token for user then for every request decrease the token&amp;nbsp;&lt;/div&gt;&lt;div&gt;2. once token &amp;lt;=0 drop request&amp;nbsp;&lt;/div&gt;&lt;div&gt;3. also keep track of time so that within that time frame if tokens get finished not serve more request&lt;/div&gt;&lt;div&gt;4. else time-window expire refill the token by make token count to initial capacity&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;h4&gt;problem -&amp;nbsp;&lt;/h4&gt;&lt;div&gt;from same user multiple request came at same time from different server then that might create race condition&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="470" y="3710" width="260" height="410" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-114" value="99" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
-          <mxGeometry x="680" y="3330" width="80" height="80" as="geometry" />
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-126" value="&lt;h1&gt;Leaky Bucket&lt;/h1&gt;&lt;p&gt;1. Have a buffer/queue of constant size.&lt;/p&gt;&lt;p&gt;2. request will get filled up there if queue is full request gets drops&lt;/p&gt;&lt;p&gt;3. process from queue at constant &amp;nbsp; time and clear queue once started consuming the request&amp;nbsp;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Problem -&lt;/p&gt;&lt;p&gt;Startvation &amp;nbsp;for slow producers&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="780" y="3700" width="190" height="260" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-115" value="100" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
-          <mxGeometry x="680" y="3240" width="80" height="80" as="geometry" />
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-127" value="Token bucket" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+          <mxGeometry x="470" y="4010" width="200" height="120" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-116" value="98" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
-          <mxGeometry x="670" y="3420" width="80" height="80" as="geometry" />
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-128" value="User1: timestamp : token number " style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="Yt1-9T4JXmfCghfN-qr9-127">
+          <mxGeometry y="30" width="200" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-117" value="97" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
-          <mxGeometry x="670" y="3507" width="80" height="80" as="geometry" />
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-129" value="User2" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="Yt1-9T4JXmfCghfN-qr9-127">
+          <mxGeometry y="60" width="200" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-118" value="96" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
-          <mxGeometry x="680" y="3600" width="80" height="80" as="geometry" />
-        </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-119" value="95" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
-          <mxGeometry x="680" y="3710" width="80" height="80" as="geometry" />
-        </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-120" value="Text" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="700" y="3790" width="40" height="20" as="geometry" />
-        </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-121" value="Movie&lt;br&gt;total # of time watched&lt;br&gt;user given rating&lt;br&gt;derived rating" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
-          <mxGeometry x="1040" y="3310" width="100" height="100" as="geometry" />
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-130" value="user3 " style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="Yt1-9T4JXmfCghfN-qr9-127">
+          <mxGeometry y="90" width="200" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
