@@ -15,7 +15,6 @@ public class NextPermutation {
                 break;
             }
         }
-
         if(k==-1){
             reverse(a,0,a.length-1);
             return;

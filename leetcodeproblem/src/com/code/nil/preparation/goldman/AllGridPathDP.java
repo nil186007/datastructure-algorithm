@@ -7,15 +7,12 @@ public class AllGridPathDP {
 
     public static int getAllPath(int [][]a , int i, int j, Map<String, Integer> indexMap){
 
-        if(a.length-1==i && a[0].length-1==j ){
-            return 1;
-        }
-        if(i>=a.length || j>= a[0].length){
-            return 0;
-        }
-        if (indexMap.get(i+","+j)!=null) {
-            return indexMap.get(i+","+j);
-        }
+        if(a.length-1==i && a[0].length-1==j ) return 1;
+
+        if(i>=a.length || j>= a[0].length) return 0;
+
+        if (indexMap.get(i+","+j)!=null) return indexMap.get(i+","+j);
+
         int result = getAllPath(a,i+1, j , indexMap) + getAllPath(a,i, j+1 , indexMap);
         indexMap.put(i+","+j , result);
         return result;
@@ -26,5 +23,22 @@ public class AllGridPathDP {
         getAllPath(a,0,0,new HashMap<>());
 
         System.out.println(getAllPath(a,0,0,new HashMap<>()));
+    }
+
+    public static int minimumJump(int [] a){
+
+        int farthest = 0;
+        int jump =0;
+        int currentFarthest = farthest;
+        for(int i=0; i<a.length; i++){
+
+            farthest = Math.max(farthest, i+a[i]);
+            if(farthest<a.length && i==currentFarthest){
+                jump++;
+                currentFarthest = farthest;
+            }
+
+        }
+        return jump;
     }
 }

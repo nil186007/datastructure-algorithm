@@ -3,7 +3,7 @@ package com.nilesh.practice.frequecy;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MatrixTraversal {
+public class           MatrixTraversal {
 
    static int totalCount = 0;
    static List<Integer> allSum = new ArrayList<>();
