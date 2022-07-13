@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-07-13T12:03:01.309Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36" etag="CQEyBSwT971KUYF-94va" version="20.0.4" type="github">
+<mxfile host="app.diagrams.net" modified="2022-07-13T12:04:21.349Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36" etag="edkjSJrfa_UPPd65oOJy" version="20.0.4" type="github">
   <diagram id="w3xWAHxM6hMif5GmvVi4" name="Page-1">
-    <mxGraphModel dx="1449" dy="602" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1449" dy="545" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -196,10 +196,10 @@
           <mxGeometry x="1040" y="2620" width="30" height="60" as="geometry" />
         </mxCell>
         <mxCell id="Yt1-9T4JXmfCghfN-qr9-111" value="&lt;h1&gt;Video Stream Platform (Netflix/ Youtube)&lt;/h1&gt;&lt;div&gt;1. User log in&lt;/div&gt;&lt;div&gt;2. upload video&lt;/div&gt;&lt;div&gt;3. see recomend videos&lt;/div&gt;&lt;div&gt;4. search a video&lt;/div&gt;&lt;div&gt;5. play the video&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;NFR----&lt;/div&gt;&lt;div&gt;1. no buffer or as less as possible&lt;/div&gt;&lt;div&gt;2. low&amp;nbsp;&lt;/div&gt;&lt;div&gt;&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="45" y="3300" width="325" height="200" as="geometry" />
+          <mxGeometry x="45" y="3110" width="325" height="200" as="geometry" />
         </mxCell>
         <mxCell id="Yt1-9T4JXmfCghfN-qr9-112" value="&lt;h1&gt;Solution&lt;/h1&gt;&lt;div&gt;1. Multiple type of devices&lt;/div&gt;&lt;div&gt;&amp;nbsp;- different device support different forms&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt; - different&lt;/span&gt;&amp;nbsp;dimension&lt;/div&gt;&lt;div&gt;&amp;nbsp;- bandwidth required to play the different videos&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Client &amp;nbsp;- Adaptive bit rate streaming&amp;nbsp;&lt;span style=&quot;white-space: pre;&quot;&gt; &lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt; try  to get high pixel if delay next&amp;nbsp;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;chunk it request with lower pixel&lt;/span&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="354" y="3310" width="216" height="220" as="geometry" />
+          <mxGeometry x="354" y="3120" width="216" height="220" as="geometry" />
         </mxCell>
         <mxCell id="Yt1-9T4JXmfCghfN-qr9-124" value="&lt;h1&gt;Rate Limiter&lt;/h1&gt;&lt;div&gt;Why ---&lt;/div&gt;&lt;div&gt;1. Userexperience&amp;nbsp;&lt;/div&gt;&lt;div&gt;2. security issue (prevent dos)&lt;/div&gt;&lt;div&gt;3. Operation cost - auto scale in cloud&lt;/div&gt;&lt;div&gt;&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;How -&amp;nbsp;&lt;/div&gt;&lt;div&gt;1. User based rate limit - how many request per user over a window&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;2. Concurrent - how many concurrent session can be open&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;3. Location based Rate limiting - only from location get more request&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;4. Server based rate limit&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="60" y="3711" width="340" height="289" as="geometry" />
@@ -339,6 +339,9 @@
         </mxCell>
         <mxCell id="6JrUVtVgNSvHZyS8IFVP-19" value="USer" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontSize=14;" vertex="1" parent="1">
           <mxGeometry x="555" y="4540" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="6JrUVtVgNSvHZyS8IFVP-28" value="&lt;h1&gt;Heading&lt;/h1&gt;&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="50" y="4780" width="190" height="120" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
