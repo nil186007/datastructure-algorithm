@@ -1,150 +1,150 @@
-<mxfile host="app.diagrams.net" modified="2022-07-07T04:26:05.552Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15" etag="-DCZBf0v2lSBglK7axxM" version="20.0.4" type="github">
+<mxfile host="app.diagrams.net" modified="2022-07-13T12:03:01.309Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36" etag="CQEyBSwT971KUYF-94va" version="20.0.4" type="github">
   <diagram id="w3xWAHxM6hMif5GmvVi4" name="Page-1">
-    <mxGraphModel dx="1483" dy="608" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1449" dy="602" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="VY6cc99BuFBR4iTMat-C-2" value="&lt;h1&gt;Amazon (E-commerce)&lt;/h1&gt;&lt;h3&gt;Functional Requirements :&amp;nbsp;&lt;/h3&gt;&lt;p&gt;1. User login&lt;/p&gt;&lt;p&gt;2. user search a product&lt;/p&gt;&lt;p&gt;3. recomendation&amp;nbsp;&lt;/p&gt;&lt;p&gt;4. delivery time&lt;/p&gt;&lt;p&gt;5. Cart having all selected product&lt;/p&gt;&lt;p&gt;6. checkout the cart and payment&lt;/p&gt;&lt;p&gt;7. view order&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;h3&gt;Non Functional requirements :&lt;/h3&gt;&lt;p&gt;1. All payment related services should be highly consistent&lt;/p&gt;&lt;p&gt;2. User search should be highly available&lt;/p&gt;&lt;p&gt;3. latency should less user facing services&lt;/p&gt;&lt;p&gt;4. number of daily active user&lt;/p&gt;&lt;p&gt;5. daily number of order placed&amp;nbsp;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="10" y="28" width="260" height="492" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-30" value="&lt;h3&gt;RDBMS&lt;/h3&gt;&lt;p&gt;1. RDBMS are not good for hierarchical data. Good for flat data structure&lt;/p&gt;&lt;p&gt;2. Parent child relationship also not naturally present&amp;nbsp;&lt;/p&gt;&lt;p&gt;3. Hierarchical data has single parent and zero or more children&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;example hierarchy -&lt;/p&gt;&lt;p&gt;---&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;&quot;&gt;	Electronics/Televiosn/LCD&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;&quot;&gt;Electronics/Televiosn/LED&lt;/span&gt;&lt;span style=&quot;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;&quot;&gt;Electronics/Televiosn/QLED&lt;/span&gt;&lt;span style=&quot;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Electronics/Televiosn/OLED&lt;span style=&quot;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Electronics/Mobile/smarts&lt;/p&gt;&lt;p&gt;Electronics/Mobile/features&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;h3&gt;Adjacency List Model Schema :&amp;nbsp;&lt;/h3&gt;&lt;p&gt;// each item in the table contians immediate parent id&lt;/p&gt;&lt;p&gt;CREATE TABLE Category (catID, name, parentCatID);&lt;/p&gt;&lt;p&gt;Getting data by doing self join&lt;/p&gt;&lt;p&gt;select t1.name as l1, t2.name as l2, t3.name as l3, t4.name as l4&lt;/p&gt;&lt;p&gt;From category as t1&lt;/p&gt;&lt;p&gt;Left &amp;nbsp;JOIN category as t2 ON t2.aprent=t1.category_id&lt;/p&gt;&lt;p&gt;Left &amp;nbsp;JOIN category as t3 ON t3.aprent=t2.category_id&lt;br&gt;&lt;/p&gt;&lt;p&gt;Left &amp;nbsp;JOIN category as t4 ON t4.aprent=t3.category_id&lt;br&gt;&lt;/p&gt;&lt;p&gt;WHERE t1.name=&quot;ELECTRONICs&#39;;&lt;/p&gt;&lt;pre style=&quot;font-size: 16px; box-sizing: inherit; font-family: Inconsolata, monospace; border: 1px solid rgb(209, 209, 209); line-height: 1.3125; margin-top: 0px; margin-bottom: 1.75em; max-width: 100%; overflow: auto; padding: 1.75em; overflow-wrap: break-word; color: rgb(26, 26, 26); font-variant-ligatures: normal; orphans: 2; widows: 2; background-color: rgb(255, 255, 255); text-decoration-thickness: initial;&quot; class=&quot;samplecode&quot;&gt;+-------------+----------------------+--------+&lt;br&gt;| category_id | name                 | parent |&lt;br&gt;+-------------+----------------------+--------+&lt;br&gt;|           1 | ELECTRONICS          |   NULL |&lt;br&gt;|           2 | TELEVISIONS          |      1 |&lt;br&gt;|           3 | TUBE                 |      2 |&lt;br&gt;|           4 | LCD                  |      2 |&lt;br&gt;|           5 | PLASMA               |      2 |&lt;br&gt;|           6 | PORTABLE ELECTRONICS |      1 |&lt;br&gt;|           7 | MP3 PLAYERS          |      6 |&lt;br&gt;|           8 | FLASH                |      7 |&lt;br&gt;|           9 | CD PLAYERS           |      6 |&lt;br&gt;|          10 | 2 WAY RADIOS         |      6 |&lt;br&gt;+-------------+----------------------+--------+&lt;/pre&gt;&lt;h4&gt;limitation - need self join for every level in the hierarchy and performance will get impacted&lt;/h4&gt;&lt;p&gt;all levels needs to knows before hand&lt;/p&gt;&lt;p&gt;deleting row show take care so that orphan row does not get created&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;h3&gt;The Nested Set Model&amp;nbsp;&lt;/h3&gt;&lt;pre style=&quot;font-size: 16px; box-sizing: inherit; font-family: Inconsolata, monospace; border: 1px solid rgb(209, 209, 209); line-height: 1.3125; margin-top: 0px; margin-bottom: 1.75em; max-width: 100%; overflow: auto; padding: 1.75em; overflow-wrap: break-word; color: rgb(26, 26, 26); font-variant-ligatures: normal; orphans: 2; widows: 2; background-color: rgb(255, 255, 255); text-decoration-thickness: initial;&quot; class=&quot;samplecode&quot;&gt;CREATE TABLE nested_category (&lt;br&gt;        category_id INT AUTO_INCREMENT PRIMARY KEY,&lt;br&gt;        name VARCHAR(20) NOT NULL,&lt;br&gt;        lft INT NOT NULL,&lt;br&gt;        rgt INT NOT NULL&lt;br&gt;);&lt;/pre&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-30" value="&lt;h3&gt;RDBMS&lt;/h3&gt;&lt;p&gt;1. RDBMS are not good for hierarchical data. Good for flat data structure&lt;/p&gt;&lt;p&gt;2. Parent child relationship also not naturally present&amp;nbsp;&lt;/p&gt;&lt;p&gt;3. Hierarchical data has single parent and zero or more children&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;example hierarchy -&lt;/p&gt;&lt;p&gt;---&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;&quot;&gt; Electronics/Televiosn/LCD&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;&quot;&gt;Electronics/Televiosn/LED&lt;/span&gt;&lt;span style=&quot;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;&quot;&gt;Electronics/Televiosn/QLED&lt;/span&gt;&lt;span style=&quot;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Electronics/Televiosn/OLED&lt;span style=&quot;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Electronics/Mobile/smarts&lt;/p&gt;&lt;p&gt;Electronics/Mobile/features&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;h3&gt;Adjacency List Model Schema :&amp;nbsp;&lt;/h3&gt;&lt;p&gt;// each item in the table contians immediate parent id&lt;/p&gt;&lt;p&gt;CREATE TABLE Category (catID, name, parentCatID);&lt;/p&gt;&lt;p&gt;Getting data by doing self join&lt;/p&gt;&lt;p&gt;select t1.name as l1, t2.name as l2, t3.name as l3, t4.name as l4&lt;/p&gt;&lt;p&gt;From category as t1&lt;/p&gt;&lt;p&gt;Left &amp;nbsp;JOIN category as t2 ON t2.aprent=t1.category_id&lt;/p&gt;&lt;p&gt;Left &amp;nbsp;JOIN category as t3 ON t3.aprent=t2.category_id&lt;br&gt;&lt;/p&gt;&lt;p&gt;Left &amp;nbsp;JOIN category as t4 ON t4.aprent=t3.category_id&lt;br&gt;&lt;/p&gt;&lt;p&gt;WHERE t1.name=&quot;ELECTRONICs&#39;;&lt;/p&gt;&lt;pre style=&quot;font-size: 16px; box-sizing: inherit; font-family: Inconsolata, monospace; border: 1px solid rgb(209, 209, 209); line-height: 1.3125; margin-top: 0px; margin-bottom: 1.75em; max-width: 100%; overflow: auto; padding: 1.75em; overflow-wrap: break-word; color: rgb(26, 26, 26); font-variant-ligatures: normal; orphans: 2; widows: 2; background-color: rgb(255, 255, 255); text-decoration-thickness: initial;&quot; class=&quot;samplecode&quot;&gt;+-------------+----------------------+--------+&lt;br&gt;| category_id | name                 | parent |&lt;br&gt;+-------------+----------------------+--------+&lt;br&gt;|           1 | ELECTRONICS          |   NULL |&lt;br&gt;|           2 | TELEVISIONS          |      1 |&lt;br&gt;|           3 | TUBE                 |      2 |&lt;br&gt;|           4 | LCD                  |      2 |&lt;br&gt;|           5 | PLASMA               |      2 |&lt;br&gt;|           6 | PORTABLE ELECTRONICS |      1 |&lt;br&gt;|           7 | MP3 PLAYERS          |      6 |&lt;br&gt;|           8 | FLASH                |      7 |&lt;br&gt;|           9 | CD PLAYERS           |      6 |&lt;br&gt;|          10 | 2 WAY RADIOS         |      6 |&lt;br&gt;+-------------+----------------------+--------+&lt;/pre&gt;&lt;h4&gt;limitation - need self join for every level in the hierarchy and performance will get impacted&lt;/h4&gt;&lt;p&gt;all levels needs to knows before hand&lt;/p&gt;&lt;p&gt;deleting row show take care so that orphan row does not get created&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;h3&gt;The Nested Set Model&amp;nbsp;&lt;/h3&gt;&lt;pre style=&quot;font-size: 16px; box-sizing: inherit; font-family: Inconsolata, monospace; border: 1px solid rgb(209, 209, 209); line-height: 1.3125; margin-top: 0px; margin-bottom: 1.75em; max-width: 100%; overflow: auto; padding: 1.75em; overflow-wrap: break-word; color: rgb(26, 26, 26); font-variant-ligatures: normal; orphans: 2; widows: 2; background-color: rgb(255, 255, 255); text-decoration-thickness: initial;&quot; class=&quot;samplecode&quot;&gt;CREATE TABLE nested_category (&lt;br&gt;        category_id INT AUTO_INCREMENT PRIMARY KEY,&lt;br&gt;        name VARCHAR(20) NOT NULL,&lt;br&gt;        lft INT NOT NULL,&lt;br&gt;        rgt INT NOT NULL&lt;br&gt;);&lt;/pre&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="330" y="90" width="686" height="1850" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-44" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=http://mikehillyer.com/media//nested_numbered.png;" vertex="1" parent="1">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-44" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=http://mikehillyer.com/media//nested_numbered.png;" parent="1" vertex="1">
           <mxGeometry x="370" y="1450" width="520" height="157" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-45" value="&lt;pre style=&quot;font-size: 16px; font-style: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration: none; box-sizing: inherit; font-family: Inconsolata, monospace; border: 1px solid rgb(209, 209, 209); line-height: 1.3125; margin: 0px 0px 1.75em; max-width: 100%; overflow: auto; padding: 1.75em; overflow-wrap: break-word; color: rgb(26, 26, 26); font-variant-ligatures: normal; orphans: 2; widows: 2; background-color: rgb(255, 255, 255); text-decoration-thickness: initial;&quot; class=&quot;samplecode&quot;&gt;+-------------+----------------------+-----+-----+&#xa;| category_id | name                 | lft | rgt |&#xa;+-------------+----------------------+-----+-----+&#xa;|           1 | ELECTRONICS          |   1 |  20 |&#xa;|           2 | TELEVISIONS          |   2 |   9 |&#xa;|           3 | TUBE                 |   3 |   4 |&#xa;|           4 | LCD                  |   5 |   6 |&#xa;|           5 | PLASMA               |   7 |   8 |&#xa;|           6 | PORTABLE ELECTRONICS |  10 |  19 |&#xa;|           7 | MP3 PLAYERS          |  11 |  14 |&#xa;|           8 | FLASH                |  12 |  13 |&#xa;|           9 | CD PLAYERS           |  15 |  16 |&#xa;|          10 | 2 WAY RADIOS         |  17 |  18 |&#xa;+-------------+----------------------+-----+-----+&lt;/pre&gt;" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-45" value="&lt;pre style=&quot;font-size: 16px; font-style: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration: none; box-sizing: inherit; font-family: Inconsolata, monospace; border: 1px solid rgb(209, 209, 209); line-height: 1.3125; margin: 0px 0px 1.75em; max-width: 100%; overflow: auto; padding: 1.75em; overflow-wrap: break-word; color: rgb(26, 26, 26); font-variant-ligatures: normal; orphans: 2; widows: 2; background-color: rgb(255, 255, 255); text-decoration-thickness: initial;&quot; class=&quot;samplecode&quot;&gt;+-------------+----------------------+-----+-----+&#xa;| category_id | name                 | lft | rgt |&#xa;+-------------+----------------------+-----+-----+&#xa;|           1 | ELECTRONICS          |   1 |  20 |&#xa;|           2 | TELEVISIONS          |   2 |   9 |&#xa;|           3 | TUBE                 |   3 |   4 |&#xa;|           4 | LCD                  |   5 |   6 |&#xa;|           5 | PLASMA               |   7 |   8 |&#xa;|           6 | PORTABLE ELECTRONICS |  10 |  19 |&#xa;|           7 | MP3 PLAYERS          |  11 |  14 |&#xa;|           8 | FLASH                |  12 |  13 |&#xa;|           9 | CD PLAYERS           |  15 |  16 |&#xa;|          10 | 2 WAY RADIOS         |  17 |  18 |&#xa;+-------------+----------------------+-----+-----+&lt;/pre&gt;" style="text;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="354" y="1580" width="560" height="420" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-46" value="&lt;h1&gt;Google Map&lt;/h1&gt;&lt;h3&gt;Functional Requirement :&amp;nbsp;&lt;/h3&gt;&lt;div&gt;1. User login&lt;/div&gt;&lt;div&gt;2. find Location&lt;/div&gt;&lt;div&gt;3. find path from source to destination&lt;/div&gt;&lt;div&gt;4. path based on traffic condition&lt;/div&gt;&lt;div&gt;5. ETA / distance&lt;/div&gt;&lt;div&gt;6. road blockage, weather&lt;/div&gt;&lt;div&gt;7. different travel option&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;h3&gt;NonFunctional Requirement :&amp;nbsp;&lt;/h3&gt;&lt;div&gt;1. High Available&lt;/div&gt;&lt;div&gt;2. Accuracy&amp;nbsp;&lt;/div&gt;&lt;div&gt;3. May take some time to show the route&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;4. scale&lt;/div&gt;&lt;div&gt;	&lt;span style=&quot;white-space: pre;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;	&lt;/span&gt;Daily&lt;/span&gt;&amp;nbsp;Active User&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;	&lt;/span&gt;Daily Request&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;5. Different companies may use the app&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-46" value="&lt;h1&gt;Google Map&lt;/h1&gt;&lt;h3&gt;Functional Requirement :&amp;nbsp;&lt;/h3&gt;&lt;div&gt;1. User login&lt;/div&gt;&lt;div&gt;2. find Location&lt;/div&gt;&lt;div&gt;3. find path from source to destination&lt;/div&gt;&lt;div&gt;4. path based on traffic condition&lt;/div&gt;&lt;div&gt;5. ETA / distance&lt;/div&gt;&lt;div&gt;6. road blockage, weather&lt;/div&gt;&lt;div&gt;7. different travel option&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;h3&gt;NonFunctional Requirement :&amp;nbsp;&lt;/h3&gt;&lt;div&gt;1. High Available&lt;/div&gt;&lt;div&gt;2. Accuracy&amp;nbsp;&lt;/div&gt;&lt;div&gt;3. May take some time to show the route&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;4. scale&lt;/div&gt;&lt;div&gt; &lt;span style=&quot;white-space: pre;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt; &lt;/span&gt;Daily&lt;/span&gt;&amp;nbsp;Active User&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt; &lt;/span&gt;Daily Request&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;5. Different companies may use the app&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="45" y="2140" width="235" height="500" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-47" value="&lt;h4&gt;Chanllenges&lt;/h4&gt;&lt;p&gt;- find out all the routes in the world is very challenging&lt;/p&gt;&lt;p&gt;&amp;nbsp;presenting &amp;nbsp;whole data in graph and edges&lt;/p&gt;&lt;p&gt;- Dynamic ETA is has many factors&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;1. from existing govt route data&lt;/p&gt;&lt;p&gt;2. other user travelling pattern&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-47" value="&lt;h4&gt;Chanllenges&lt;/h4&gt;&lt;p&gt;- find out all the routes in the world is very challenging&lt;/p&gt;&lt;p&gt;&amp;nbsp;presenting &amp;nbsp;whole data in graph and edges&lt;/p&gt;&lt;p&gt;- Dynamic ETA is has many factors&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;1. from existing govt route data&lt;/p&gt;&lt;p&gt;2. other user travelling pattern&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="300" y="2150" width="240" height="230" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-48" value="&lt;h1&gt;Solution&amp;nbsp;&lt;/h1&gt;&lt;p&gt;- Divide map of city in block of 1*1 each Bloch will have block ids and&amp;nbsp;&lt;/p&gt;&lt;p&gt;- Try to solve it for each block with graph and Djakstra / bellman ford&lt;/p&gt;&lt;p&gt;- Floyd/warshall all shortest path in &amp;nbsp;block&amp;nbsp;&lt;/p&gt;&lt;p&gt;edges are road with different wieght&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;	- distance&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;	- traffic&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;	- ETA (if infinite then oneway road)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;	- directed edge&lt;/span&gt;	&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;	&lt;/span&gt;&lt;/p&gt;&lt;p&gt;- then merge them to create bigger solution&amp;nbsp;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;-- using lat / long of source and destination try to find the arial distance and relative position . then based on arial distance find &amp;nbsp;the buffer and search those blocks&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;- keep the exit of each Block&lt;/p&gt;&lt;p&gt;- create bigger blocks &amp;nbsp;and by keep track of outbound edge&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-48" value="&lt;h1&gt;Solution&amp;nbsp;&lt;/h1&gt;&lt;p&gt;- Divide map of city in block of 1*1 each Bloch will have block ids and&amp;nbsp;&lt;/p&gt;&lt;p&gt;- Try to solve it for each block with graph and Djakstra / bellman ford&lt;/p&gt;&lt;p&gt;- Floyd/warshall all shortest path in &amp;nbsp;block&amp;nbsp;&lt;/p&gt;&lt;p&gt;edges are road with different wieght&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;white-space: pre;&quot;&gt; - distance&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt; - traffic&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;white-space: pre;&quot;&gt; - ETA (if infinite then oneway road)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt; - directed edge&lt;/span&gt; &lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;p&gt;- then merge them to create bigger solution&amp;nbsp;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;-- using lat / long of source and destination try to find the arial distance and relative position . then based on arial distance find &amp;nbsp;the buffer and search those blocks&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;- keep the exit of each Block&lt;/p&gt;&lt;p&gt;- create bigger blocks &amp;nbsp;and by keep track of outbound edge&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="590" y="2140" width="380" height="500" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-56" value="&lt;h1&gt;Edge&lt;/h1&gt;&lt;div&gt;have weight as - distance&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;	&lt;span style=&quot;white-space: pre;&quot;&gt;	&lt;span style=&quot;white-space: pre;&quot;&gt;	Avg speed&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;don&#39;t have traffic/weather/roadcondotion  as weight&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;the rather measure avg speed via this value&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-56" value="&lt;h1&gt;Edge&lt;/h1&gt;&lt;div&gt;have weight as - distance&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt; &lt;span style=&quot;white-space: pre;&quot;&gt; &lt;span style=&quot;white-space: pre;&quot;&gt; Avg speed&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;don&#39;t have traffic/weather/roadcondotion  as weight&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;the rather measure avg speed via this value&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="590" y="2600" width="310" height="160" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-60" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="Yt1-9T4JXmfCghfN-qr9-57" target="Yt1-9T4JXmfCghfN-qr9-58">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-60" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="Yt1-9T4JXmfCghfN-qr9-57" target="Yt1-9T4JXmfCghfN-qr9-58" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-62" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="Yt1-9T4JXmfCghfN-qr9-57" target="Yt1-9T4JXmfCghfN-qr9-59">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-62" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" parent="1" source="Yt1-9T4JXmfCghfN-qr9-57" target="Yt1-9T4JXmfCghfN-qr9-59" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-57" value="Actor" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-57" value="Actor" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
           <mxGeometry x="1140" y="2280" width="30" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-61" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="Yt1-9T4JXmfCghfN-qr9-58" target="Yt1-9T4JXmfCghfN-qr9-59">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-61" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="Yt1-9T4JXmfCghfN-qr9-58" target="Yt1-9T4JXmfCghfN-qr9-59" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-58" value="Load Balancer" style="rounded=0;whiteSpace=wrap;html=1;rotation=-90;" vertex="1" parent="1">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-58" value="Load Balancer" style="rounded=0;whiteSpace=wrap;html=1;rotation=-90;" parent="1" vertex="1">
           <mxGeometry x="1200" y="2300" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-65" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="Yt1-9T4JXmfCghfN-qr9-59" target="Yt1-9T4JXmfCghfN-qr9-63">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-65" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="Yt1-9T4JXmfCghfN-qr9-59" target="Yt1-9T4JXmfCghfN-qr9-63" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-67" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="Yt1-9T4JXmfCghfN-qr9-59" target="Yt1-9T4JXmfCghfN-qr9-66">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-67" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="Yt1-9T4JXmfCghfN-qr9-59" target="Yt1-9T4JXmfCghfN-qr9-66" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-59" value="Web Socket Handler" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-59" value="Web Socket Handler" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
           <mxGeometry x="1340" y="2270" width="80" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-81" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="Yt1-9T4JXmfCghfN-qr9-63" target="Yt1-9T4JXmfCghfN-qr9-70">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-81" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="Yt1-9T4JXmfCghfN-qr9-63" target="Yt1-9T4JXmfCghfN-qr9-70" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-63" value="WebSocket&lt;br&gt;Manager&lt;br&gt;(userid : websocker hadler - radis)" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-63" value="WebSocket&lt;br&gt;Manager&lt;br&gt;(userid : websocker hadler - radis)" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
           <mxGeometry x="1420" y="2140" width="110" height="110" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-69" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="Yt1-9T4JXmfCghfN-qr9-66" target="Yt1-9T4JXmfCghfN-qr9-68">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-69" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="Yt1-9T4JXmfCghfN-qr9-66" target="Yt1-9T4JXmfCghfN-qr9-68" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-66" value="Location Service" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-66" value="Location Service" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
           <mxGeometry x="1470" y="2300" width="80" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-73" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="Yt1-9T4JXmfCghfN-qr9-68" target="Yt1-9T4JXmfCghfN-qr9-71">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-73" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="Yt1-9T4JXmfCghfN-qr9-68" target="Yt1-9T4JXmfCghfN-qr9-71" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-74" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.425;entryY=1.038;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="Yt1-9T4JXmfCghfN-qr9-68" target="Yt1-9T4JXmfCghfN-qr9-72">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-74" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.425;entryY=1.038;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="Yt1-9T4JXmfCghfN-qr9-68" target="Yt1-9T4JXmfCghfN-qr9-72" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-82" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Yt1-9T4JXmfCghfN-qr9-68" target="Yt1-9T4JXmfCghfN-qr9-80">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-82" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="Yt1-9T4JXmfCghfN-qr9-68" target="Yt1-9T4JXmfCghfN-qr9-80" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-68" value="Kafka" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" vertex="1" parent="1">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-68" value="Kafka" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" parent="1" vertex="1">
           <mxGeometry x="1610" y="2310" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-70" value="Redis" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-70" value="Redis" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
           <mxGeometry x="1590" y="2150" width="40" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-76" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Yt1-9T4JXmfCghfN-qr9-71" target="Yt1-9T4JXmfCghfN-qr9-75">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-76" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="Yt1-9T4JXmfCghfN-qr9-71" target="Yt1-9T4JXmfCghfN-qr9-75" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-71" value="Map Update Service" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-71" value="Map Update Service" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
           <mxGeometry x="1700" y="2180" width="80" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-77" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Yt1-9T4JXmfCghfN-qr9-72" target="Yt1-9T4JXmfCghfN-qr9-75">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-77" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" parent="1" source="Yt1-9T4JXmfCghfN-qr9-72" target="Yt1-9T4JXmfCghfN-qr9-75" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-72" value="Traffic Update Service" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-72" value="Traffic Update Service" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
           <mxGeometry x="1830" y="2180" width="80" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-79" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="Yt1-9T4JXmfCghfN-qr9-75" target="Yt1-9T4JXmfCghfN-qr9-78">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-79" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="Yt1-9T4JXmfCghfN-qr9-75" target="Yt1-9T4JXmfCghfN-qr9-78" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-75" value="graph processing Service" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-75" value="graph processing Service" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
           <mxGeometry x="1760" y="2370" width="80" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-78" value="" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" vertex="1" parent="1">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-78" value="" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" parent="1" vertex="1">
           <mxGeometry x="1900" y="2370" width="60" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-83" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="Yt1-9T4JXmfCghfN-qr9-80" target="Yt1-9T4JXmfCghfN-qr9-68">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-83" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;" parent="1" source="Yt1-9T4JXmfCghfN-qr9-80" target="Yt1-9T4JXmfCghfN-qr9-68" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-80" value="Analytics Service (Spark stream)&lt;br&gt;1. New Road&lt;br&gt;2. Avg speed&lt;br&gt;3. Hot spot / traffic&lt;br&gt;4. Type of vehicle" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-80" value="Analytics Service (Spark stream)&lt;br&gt;1. New Road&lt;br&gt;2. Avg speed&lt;br&gt;3. Hot spot / traffic&lt;br&gt;4. Type of vehicle" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
           <mxGeometry x="1510" y="2420" width="110" height="110" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-90" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="Yt1-9T4JXmfCghfN-qr9-84" target="Yt1-9T4JXmfCghfN-qr9-89">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-90" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="Yt1-9T4JXmfCghfN-qr9-84" target="Yt1-9T4JXmfCghfN-qr9-89" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-104" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;" edge="1" parent="1" source="Yt1-9T4JXmfCghfN-qr9-84" target="Yt1-9T4JXmfCghfN-qr9-87">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-104" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;" parent="1" source="Yt1-9T4JXmfCghfN-qr9-84" target="Yt1-9T4JXmfCghfN-qr9-87" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-84" value="Area Search&amp;nbsp;&lt;br&gt;Service" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-84" value="Area Search&amp;nbsp;&lt;br&gt;Service" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
           <mxGeometry x="1350" y="2540" width="80" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-88" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="Yt1-9T4JXmfCghfN-qr9-85" target="Yt1-9T4JXmfCghfN-qr9-87">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-88" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="Yt1-9T4JXmfCghfN-qr9-85" target="Yt1-9T4JXmfCghfN-qr9-87" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-85" value="Navigating&amp;nbsp;&lt;br&gt;Service" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-85" value="Navigating&amp;nbsp;&lt;br&gt;Service" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
           <mxGeometry x="1350" y="2650" width="80" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-93" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="Yt1-9T4JXmfCghfN-qr9-86" target="Yt1-9T4JXmfCghfN-qr9-92">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-93" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="Yt1-9T4JXmfCghfN-qr9-86" target="Yt1-9T4JXmfCghfN-qr9-92" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-86" value="Map Service" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-86" value="Map Service" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
           <mxGeometry x="1350" y="2760" width="80" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-105" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="Yt1-9T4JXmfCghfN-qr9-87" target="Yt1-9T4JXmfCghfN-qr9-106">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-105" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="Yt1-9T4JXmfCghfN-qr9-87" target="Yt1-9T4JXmfCghfN-qr9-106" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="1830" y="2680" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-87" value="Kafka" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" vertex="1" parent="1">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-87" value="Kafka" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" parent="1" vertex="1">
           <mxGeometry x="1520" y="2650" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-89" value="ElasticSerch" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" vertex="1" parent="1">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-89" value="ElasticSerch" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" parent="1" vertex="1">
           <mxGeometry x="1654" y="2545" width="90" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-101" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="Yt1-9T4JXmfCghfN-qr9-91" target="Yt1-9T4JXmfCghfN-qr9-84">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-101" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="Yt1-9T4JXmfCghfN-qr9-91" target="Yt1-9T4JXmfCghfN-qr9-84" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-102" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="Yt1-9T4JXmfCghfN-qr9-91" target="Yt1-9T4JXmfCghfN-qr9-85">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-102" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="Yt1-9T4JXmfCghfN-qr9-91" target="Yt1-9T4JXmfCghfN-qr9-85" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-103" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="Yt1-9T4JXmfCghfN-qr9-91" target="Yt1-9T4JXmfCghfN-qr9-86">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-103" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="Yt1-9T4JXmfCghfN-qr9-91" target="Yt1-9T4JXmfCghfN-qr9-86" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="1271" y="2730" />
@@ -153,128 +153,192 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-91" value="Load Balancer" style="rounded=0;whiteSpace=wrap;html=1;rotation=-90;" vertex="1" parent="1">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-91" value="Load Balancer" style="rounded=0;whiteSpace=wrap;html=1;rotation=-90;" parent="1" vertex="1">
           <mxGeometry x="1181" y="2630" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-97" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="Yt1-9T4JXmfCghfN-qr9-92" target="Yt1-9T4JXmfCghfN-qr9-95">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-97" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="Yt1-9T4JXmfCghfN-qr9-92" target="Yt1-9T4JXmfCghfN-qr9-95" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-98" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1" source="Yt1-9T4JXmfCghfN-qr9-92" target="Yt1-9T4JXmfCghfN-qr9-96">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-98" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" parent="1" source="Yt1-9T4JXmfCghfN-qr9-92" target="Yt1-9T4JXmfCghfN-qr9-96" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-92" value="Graph Processing Service" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-92" value="Graph Processing Service" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
           <mxGeometry x="1530" y="2760" width="80" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-99" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="Yt1-9T4JXmfCghfN-qr9-94" target="Yt1-9T4JXmfCghfN-qr9-92">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-99" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="Yt1-9T4JXmfCghfN-qr9-94" target="Yt1-9T4JXmfCghfN-qr9-92" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-94" value="Third Party service" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-94" value="Third Party service" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
           <mxGeometry x="1530" y="2883" width="80" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-108" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="Yt1-9T4JXmfCghfN-qr9-95" target="Yt1-9T4JXmfCghfN-qr9-100">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-108" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="Yt1-9T4JXmfCghfN-qr9-95" target="Yt1-9T4JXmfCghfN-qr9-100" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-95" value="Historical Cached data" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-95" value="Historical Cached data" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
           <mxGeometry x="1700" y="2760" width="80" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-107" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="Yt1-9T4JXmfCghfN-qr9-96" target="Yt1-9T4JXmfCghfN-qr9-100">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-107" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="Yt1-9T4JXmfCghfN-qr9-96" target="Yt1-9T4JXmfCghfN-qr9-100" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-96" value="Block Processing Service" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-96" value="Block Processing Service" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
           <mxGeometry x="1700" y="2880" width="80" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-100" value="" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" vertex="1" parent="1">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-100" value="" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" parent="1" vertex="1">
           <mxGeometry x="1840" y="2860" width="60" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-109" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1" source="Yt1-9T4JXmfCghfN-qr9-106" target="Yt1-9T4JXmfCghfN-qr9-87">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-109" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" parent="1" source="Yt1-9T4JXmfCghfN-qr9-106" target="Yt1-9T4JXmfCghfN-qr9-87" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-106" value="Analytic Service&lt;br&gt;(1.ETA prediction&lt;br&gt;2.Route deviation&lt;br&gt;3. common hotspots&lt;br&gt;4. user profiling)" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-106" value="Analytic Service&lt;br&gt;(1.ETA prediction&lt;br&gt;2.Route deviation&lt;br&gt;3. common hotspots&lt;br&gt;4. user profiling)" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
           <mxGeometry x="1790" y="2590" width="130" height="130" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-110" value="Actor" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-110" value="Actor" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
           <mxGeometry x="1040" y="2620" width="30" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-111" value="&lt;h1&gt;Video Stream Platform (Netflix/ Youtube)&lt;/h1&gt;&lt;div&gt;1. User log in&lt;/div&gt;&lt;div&gt;2. upload video&lt;/div&gt;&lt;div&gt;3. see recomend videos&lt;/div&gt;&lt;div&gt;4. search a video&lt;/div&gt;&lt;div&gt;5. play the video&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;NFR----&lt;/div&gt;&lt;div&gt;1. no buffer or as less as possible&lt;/div&gt;&lt;div&gt;2. low&amp;nbsp;&lt;/div&gt;&lt;div&gt;&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-111" value="&lt;h1&gt;Video Stream Platform (Netflix/ Youtube)&lt;/h1&gt;&lt;div&gt;1. User log in&lt;/div&gt;&lt;div&gt;2. upload video&lt;/div&gt;&lt;div&gt;3. see recomend videos&lt;/div&gt;&lt;div&gt;4. search a video&lt;/div&gt;&lt;div&gt;5. play the video&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;NFR----&lt;/div&gt;&lt;div&gt;1. no buffer or as less as possible&lt;/div&gt;&lt;div&gt;2. low&amp;nbsp;&lt;/div&gt;&lt;div&gt;&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="45" y="3300" width="325" height="200" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-112" value="&lt;h1&gt;Solution&lt;/h1&gt;&lt;div&gt;1. Multiple type of devices&lt;/div&gt;&lt;div&gt;&amp;nbsp;- different device support different forms&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;	- different&lt;/span&gt;&amp;nbsp;dimension&lt;/div&gt;&lt;div&gt;&amp;nbsp;- bandwidth required to play the different videos&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Client &amp;nbsp;- Adaptive bit rate streaming&amp;nbsp;&lt;span style=&quot;white-space: pre;&quot;&gt;	&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;	try  to get high pixel if delay next&amp;nbsp;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;chunk it request with lower pixel&lt;/span&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-112" value="&lt;h1&gt;Solution&lt;/h1&gt;&lt;div&gt;1. Multiple type of devices&lt;/div&gt;&lt;div&gt;&amp;nbsp;- different device support different forms&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt; - different&lt;/span&gt;&amp;nbsp;dimension&lt;/div&gt;&lt;div&gt;&amp;nbsp;- bandwidth required to play the different videos&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Client &amp;nbsp;- Adaptive bit rate streaming&amp;nbsp;&lt;span style=&quot;white-space: pre;&quot;&gt; &lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt; try  to get high pixel if delay next&amp;nbsp;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;chunk it request with lower pixel&lt;/span&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="354" y="3310" width="216" height="220" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-124" value="&lt;h1&gt;Rate Limiter&lt;/h1&gt;&lt;div&gt;Why ---&lt;/div&gt;&lt;div&gt;1. Userexperience&amp;nbsp;&lt;/div&gt;&lt;div&gt;2. security issue (prevent dos)&lt;/div&gt;&lt;div&gt;3. Operation cost - auto scale in cloud&lt;/div&gt;&lt;div&gt;&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;How -&amp;nbsp;&lt;/div&gt;&lt;div&gt;1. User based rate limit - how many request per user over a window&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;2. Concurrent - how many concurrent session can be open&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;3. Location based Rate limiting - only from location get more request&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;4. Server based rate limit&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-124" value="&lt;h1&gt;Rate Limiter&lt;/h1&gt;&lt;div&gt;Why ---&lt;/div&gt;&lt;div&gt;1. Userexperience&amp;nbsp;&lt;/div&gt;&lt;div&gt;2. security issue (prevent dos)&lt;/div&gt;&lt;div&gt;3. Operation cost - auto scale in cloud&lt;/div&gt;&lt;div&gt;&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;How -&amp;nbsp;&lt;/div&gt;&lt;div&gt;1. User based rate limit - how many request per user over a window&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;2. Concurrent - how many concurrent session can be open&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;3. Location based Rate limiting - only from location get more request&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;4. Server based rate limit&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="60" y="3711" width="340" height="289" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-125" value="&lt;h1&gt;Sol - Token Bucket&lt;/h1&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;1. Number of token for user then for every request decrease the token&amp;nbsp;&lt;/div&gt;&lt;div&gt;2. once token &amp;lt;=0 drop request&amp;nbsp;&lt;/div&gt;&lt;div&gt;3. also keep track of time so that within that time frame if tokens get finished not serve more request&lt;/div&gt;&lt;div&gt;4. else time-window expire refill the token by make token count to initial capacity&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;h4&gt;problem -&amp;nbsp;&lt;/h4&gt;&lt;div&gt;from same user multiple request came at same time from different server then that might create race condition&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-125" value="&lt;h1&gt;Sol - Token Bucket&lt;/h1&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;1. Number of token for user then for every request decrease the token&amp;nbsp;&lt;/div&gt;&lt;div&gt;2. once token &amp;lt;=0 drop request&amp;nbsp;&lt;/div&gt;&lt;div&gt;3. also keep track of time so that within that time frame if tokens get finished not serve more request&lt;/div&gt;&lt;div&gt;4. else time-window expire refill the token by make token count to initial capacity&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;h4&gt;problem -&amp;nbsp;&lt;/h4&gt;&lt;div&gt;from same user multiple request came at same time from different server then that might create race condition&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="470" y="3710" width="260" height="410" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-126" value="&lt;h1&gt;Leaky Bucket&lt;/h1&gt;&lt;p&gt;1. Have a buffer/queue of constant size.&lt;/p&gt;&lt;p&gt;2. request will get filled up there if queue is full request gets drops&lt;/p&gt;&lt;p&gt;3. process from queue at constant &amp;nbsp; time and clear queue once started consuming the request&amp;nbsp;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Problem -&lt;/p&gt;&lt;p&gt;Startvation &amp;nbsp;for slow producers&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-126" value="&lt;h1&gt;Leaky Bucket&lt;/h1&gt;&lt;p&gt;1. Have a buffer/queue of constant size.&lt;/p&gt;&lt;p&gt;2. request will get filled up there if queue is full request gets drops&lt;/p&gt;&lt;p&gt;3. process from queue at constant &amp;nbsp; time and clear queue once started consuming the request&amp;nbsp;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Problem -&lt;/p&gt;&lt;p&gt;Startvation &amp;nbsp;for slow producers&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="780" y="3711" width="190" height="260" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-127" value="Token bucket" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-127" value="Token bucket" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
           <mxGeometry x="470" y="4010" width="200" height="120" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-128" value="User1: timestamp : token number " style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="Yt1-9T4JXmfCghfN-qr9-127">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-128" value="User1: timestamp : token number " style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" parent="Yt1-9T4JXmfCghfN-qr9-127" vertex="1">
           <mxGeometry y="30" width="200" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-129" value="User2" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="Yt1-9T4JXmfCghfN-qr9-127">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-129" value="User2" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" parent="Yt1-9T4JXmfCghfN-qr9-127" vertex="1">
           <mxGeometry y="60" width="200" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-130" value="user3 " style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="Yt1-9T4JXmfCghfN-qr9-127">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-130" value="user3 " style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" parent="Yt1-9T4JXmfCghfN-qr9-127" vertex="1">
           <mxGeometry y="90" width="200" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-131" value="&lt;h1&gt;Fixed Counter&lt;/h1&gt;&lt;div&gt;1. rather than queue just have a counter to track total request being prossesed within a &amp;nbsp;time window&amp;nbsp;&lt;/div&gt;&lt;div&gt;2. reset the counter after every time window&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;problem -&amp;nbsp;&lt;/div&gt;&lt;div&gt;&amp;nbsp;&lt;/div&gt;&lt;div&gt;1. at end of &amp;nbsp;the time window &amp;nbsp;if we get request and beginning of the next window we gets request then it will be a pblen&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-131" value="&lt;h1&gt;Fixed Counter&lt;/h1&gt;&lt;div&gt;1. rather than queue just have a counter to track total request being prossesed within a &amp;nbsp;time window&amp;nbsp;&lt;/div&gt;&lt;div&gt;2. reset the counter after every time window&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;problem -&amp;nbsp;&lt;/div&gt;&lt;div&gt;&amp;nbsp;&lt;/div&gt;&lt;div&gt;1. at end of &amp;nbsp;the time window &amp;nbsp;if we get request and beginning of the next window we gets request then it will be a pblen&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="1016" y="3710" width="184" height="300" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-132" value="&lt;h1&gt;Sliding Window&lt;br&gt;&lt;/h1&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-132" value="&lt;h1&gt;Sliding Window&lt;br&gt;&lt;/h1&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="1260" y="3711" width="190" height="120" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-139" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="Yt1-9T4JXmfCghfN-qr9-133" target="Yt1-9T4JXmfCghfN-qr9-135">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-139" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="Yt1-9T4JXmfCghfN-qr9-133" target="Yt1-9T4JXmfCghfN-qr9-135" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-140" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="Yt1-9T4JXmfCghfN-qr9-133" target="Yt1-9T4JXmfCghfN-qr9-137">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-140" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="Yt1-9T4JXmfCghfN-qr9-133" target="Yt1-9T4JXmfCghfN-qr9-137" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-133" value="Actor" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-133" value="Actor" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
           <mxGeometry x="1580" y="3770" width="30" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-141" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="Yt1-9T4JXmfCghfN-qr9-135" target="Yt1-9T4JXmfCghfN-qr9-136">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-141" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="Yt1-9T4JXmfCghfN-qr9-135" target="Yt1-9T4JXmfCghfN-qr9-136" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-135" value="Load Balancer" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-135" value="Load Balancer" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
           <mxGeometry x="1710" y="3680" width="80" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-146" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="Yt1-9T4JXmfCghfN-qr9-136" target="Yt1-9T4JXmfCghfN-qr9-143">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-146" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="Yt1-9T4JXmfCghfN-qr9-136" target="Yt1-9T4JXmfCghfN-qr9-143" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-136" value="Rate Limiter(&lt;br&gt;Local memory data / keep update actual dB periodically)" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-136" value="Rate Limiter(&lt;br&gt;Local memory data / keep update actual dB periodically)" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
           <mxGeometry x="1830" y="3670" width="100" height="100" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-142" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="Yt1-9T4JXmfCghfN-qr9-137" target="Yt1-9T4JXmfCghfN-qr9-138">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-142" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="Yt1-9T4JXmfCghfN-qr9-137" target="Yt1-9T4JXmfCghfN-qr9-138" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-137" value="Load Balancer" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-137" value="Load Balancer" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
           <mxGeometry x="1710" y="3830" width="80" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-145" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="Yt1-9T4JXmfCghfN-qr9-138" target="Yt1-9T4JXmfCghfN-qr9-143">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-145" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="Yt1-9T4JXmfCghfN-qr9-138" target="Yt1-9T4JXmfCghfN-qr9-143" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-138" value="Rate Limiter" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-138" value="Rate Limiter" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
           <mxGeometry x="1830" y="3830" width="80" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-143" value="Redis" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" vertex="1" parent="1">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-143" value="Redis" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" parent="1" vertex="1">
           <mxGeometry x="1990" y="3751" width="60" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-147" value="Application" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-147" value="Application" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
           <mxGeometry x="1830" y="3560" width="80" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-148" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="Yt1-9T4JXmfCghfN-qr9-147">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-148" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" target="Yt1-9T4JXmfCghfN-qr9-147" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="1740" y="3680" as="sourcePoint" />
             <mxPoint x="1790" y="3630" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Yt1-9T4JXmfCghfN-qr9-149" value="&lt;h1&gt;Problem distributed Rate Limit&lt;/h1&gt;&lt;p&gt;Same user sending to to 2 different LB - sticky session - not very fault tolerant or distributed&lt;/p&gt;&lt;p&gt;Use lock on user data so that no inconsistency Race condition - Locks&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;---- relaxing rate Limit&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+        <mxCell id="Yt1-9T4JXmfCghfN-qr9-149" value="&lt;h1&gt;Problem distributed Rate Limit&lt;/h1&gt;&lt;p&gt;Same user sending to to 2 different LB - sticky session - not very fault tolerant or distributed&lt;/p&gt;&lt;p&gt;Use lock on user data so that no inconsistency Race condition - Locks&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;---- relaxing rate Limit&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="1705" y="3930" width="415" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="6JrUVtVgNSvHZyS8IFVP-1" value="&lt;h1&gt;Unique ID generation&lt;/h1&gt;&lt;div&gt;1. Twitter Snowflakes --- 64bit&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;1bit reservered&amp;nbsp; 41bit timestampinmils 5bit DC 5bit&amp;nbsp; Machine in DC 12bit SequenceNumber (it get set in every milisec)&lt;/font&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="60" y="4260" width="770" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="6JrUVtVgNSvHZyS8IFVP-2" value="&lt;h1&gt;URL Shortner&lt;/h1&gt;&lt;p&gt;1. total 7 char long&lt;/p&gt;&lt;p&gt;2. [a-zA-Z-0-9] supported char so total unique char = 62&amp;nbsp;&lt;/p&gt;&lt;p&gt;3. total URL&amp;nbsp; 62^7 = trillions of supported URL&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="60" y="4410" width="370" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="6JrUVtVgNSvHZyS8IFVP-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;fontSize=14;" edge="1" parent="1" source="6JrUVtVgNSvHZyS8IFVP-3" target="6JrUVtVgNSvHZyS8IFVP-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="6JrUVtVgNSvHZyS8IFVP-3" value="URL Providers" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="560" y="4430" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="6JrUVtVgNSvHZyS8IFVP-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=14;" edge="1" parent="1" source="6JrUVtVgNSvHZyS8IFVP-5" target="6JrUVtVgNSvHZyS8IFVP-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="6JrUVtVgNSvHZyS8IFVP-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=14;" edge="1" parent="1" source="6JrUVtVgNSvHZyS8IFVP-5" target="6JrUVtVgNSvHZyS8IFVP-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="6JrUVtVgNSvHZyS8IFVP-5" value="LoadBalancer" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;rotation=-90;" vertex="1" parent="1">
+          <mxGeometry x="650" y="4490" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="6JrUVtVgNSvHZyS8IFVP-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=-0.025;entryY=0.438;entryDx=0;entryDy=0;entryPerimeter=0;fontSize=14;" edge="1" parent="1" source="6JrUVtVgNSvHZyS8IFVP-7" target="6JrUVtVgNSvHZyS8IFVP-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="6JrUVtVgNSvHZyS8IFVP-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;fontSize=14;" edge="1" parent="1" source="6JrUVtVgNSvHZyS8IFVP-7" target="6JrUVtVgNSvHZyS8IFVP-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="6JrUVtVgNSvHZyS8IFVP-7" value="URLShortner" style="whiteSpace=wrap;html=1;aspect=fixed;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="790" y="4410" width="90" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="6JrUVtVgNSvHZyS8IFVP-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1.033;entryY=0.833;entryDx=0;entryDy=0;entryPerimeter=0;fontSize=14;" edge="1" parent="1" source="6JrUVtVgNSvHZyS8IFVP-8" target="6JrUVtVgNSvHZyS8IFVP-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="6JrUVtVgNSvHZyS8IFVP-8" value="UniqueID&lt;br&gt;Generator&lt;br&gt;1. generate Unique ID&amp;nbsp;&lt;br&gt;twitter snowflakes&lt;br&gt;2. Base62 encoding&amp;nbsp;" style="whiteSpace=wrap;html=1;aspect=fixed;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="920" y="4290" width="160" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="6JrUVtVgNSvHZyS8IFVP-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.988;entryY=0.913;entryDx=0;entryDy=0;entryPerimeter=0;fontSize=14;" edge="1" parent="1" source="6JrUVtVgNSvHZyS8IFVP-13" target="6JrUVtVgNSvHZyS8IFVP-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="6JrUVtVgNSvHZyS8IFVP-13" value="Entity - URL&lt;br&gt;1. UniqueID&lt;br&gt;2. shortenURL&lt;br&gt;3. actualURL" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="4490" width="180" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="6JrUVtVgNSvHZyS8IFVP-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=67.5;entryPerimeter=0;fontSize=14;" edge="1" parent="1" source="6JrUVtVgNSvHZyS8IFVP-18" target="6JrUVtVgNSvHZyS8IFVP-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="6JrUVtVgNSvHZyS8IFVP-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;fontSize=14;" edge="1" parent="1" source="6JrUVtVgNSvHZyS8IFVP-18">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="590" y="4600" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6JrUVtVgNSvHZyS8IFVP-27" value="301 forwarded to actualURL" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=14;" vertex="1" connectable="0" parent="6JrUVtVgNSvHZyS8IFVP-26">
+          <mxGeometry x="-0.1727" y="-2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6JrUVtVgNSvHZyS8IFVP-18" value="URL SHortner" style="whiteSpace=wrap;html=1;aspect=fixed;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="820" y="4560" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="6JrUVtVgNSvHZyS8IFVP-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;fontSize=14;" edge="1" parent="1" source="6JrUVtVgNSvHZyS8IFVP-19" target="6JrUVtVgNSvHZyS8IFVP-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="6JrUVtVgNSvHZyS8IFVP-19" value="USer" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="555" y="4540" width="30" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
