@@ -2,19 +2,63 @@ package com.code.nil.preparation.striver.tree;
 
 public class RootToNode {
 
-    public static void getPath(TreeNode root, int val, String tempPath) {
-        if (root == null) return;
-        tempPath = tempPath + "->" + root.val;
-        if (root.val == val) {
-            System.out.println(tempPath);
-            return;
-        }
-        getPath(root.left, val, tempPath);
-        getPath(root.right, val, tempPath);
-        if (!tempPath.contains("->")) {
-            tempPath.substring(0, tempPath.indexOf("->"));
-        }
+    public static int getHeight(TreeNode node) {
+        if (node == null) return 0;
+        int lh = getHeight(node.left);
+        int rh = getHeight(node.right);
+        return Math.max(lh, rh) + 1;
     }
+
+    public static int getDiameter(TreeNode node, int[] diameter) {
+        if (node == null) return 0;
+        int lh = getDiameter(node.left, diameter);
+        int rh = getDiameter(node.right, diameter);
+        diameter[0] = Math.max(diameter[0], lh + rh);
+        return Math.max(lh, rh) + 1;
+    }
+
+    public static int isBalanced(TreeNode root) {
+        if (root == null) return 0;
+        int lh = isBalanced(root.left);
+        if (lh == -1) return -1;
+        int rh = isBalanced(root.right);
+        if (rh == -1) return -1;
+        if (Math.abs(lh - rh) > 1) return -1;
+        return  Math.max(lh, rh) +1;
+    }
+
+    static int max_level = 0;
+    public static void getLeftView(TreeNode root, int level){
+        if(root==null) return;
+        if(max_level<level){
+            System.out.println(root.val);
+            max_level = level;
+        }
+        getLeftView(root.left, level+1);
+        getLeftView(root.right, level+1);
+    }
+
+    public boolean isSameTree(TreeNode p, TreeNode q) {
+        if(p==null && q==null) return true;
+        if(p==null || q==null) return false;
+        if(p.val != q.val) return false;
+        return isSameTree(p.left, q.left) && isSameTree(p.right, q.right) ;
+    }
+
+    public boolean isSame(TreeNode left, TreeNode right){
+        if(left == null && right == null) return true;
+        if(left ==null || right == null) return false;
+        return (left.val==right.val)
+                && isSame(left.left, right.right)
+                && isSame(left.right, right.left);
+
+    }
+    public boolean isSymmetric(TreeNode root) {
+        if(root==null || root.left == null && root.right == null) return true;
+        return isSame(root.left, root.right);
+    }
+
+
 
     public static TreeNode findLCA(TreeNode root, int a, int b) {
         if (root == null) return null;
@@ -29,48 +73,32 @@ public class RootToNode {
         else return null;
     }
 
-    public static int getHeight(TreeNode node) {
-        if (node == null) return 0;
 
-        int lh = getHeight(node.left);
-        int rh = getHeight(node.right);
-
-        return Math.max(lh, rh) + 1;
+    public boolean hasPathSum(TreeNode root, int targetSum) {
+        if(root==null)
+            return false;
+        targetSum-=root.val;
+        if(root.left==null && root.right==null)
+            return targetSum==0;
+        return hasPathSum(root.left, targetSum)
+                ||hasPathSum(root.right, targetSum);
     }
 
-    public static int getDiameter(TreeNode node, int[] diameter) {
-        if (node == null) return 0;
-
-        int lh = getDiameter(node.left, diameter);
-        int rh = getDiameter(node.right, diameter);
-
-        diameter[0] = Math.max(diameter[0], lh + rh);
-
-        return Math.max(lh, rh) + 1;
-    }
-
-    public static int isBalanced(TreeNode root) {
-        if (root == null) return 0;
-
-        int lh = isBalanced(root.left);
-        if (lh == -1) return -1;
-        int rh = isBalanced(root.right);
-        if (rh == -1) return -1;
-
-        if (Math.abs(lh - rh) > 1) return -1;
-        return 1 + Math.max(lh, rh);
-    }
-
-    static int max_level = 0;
-    public static void getLeftView(TreeNode root, int level){
-        if(root==null) return;
-        if(max_level<level){
-            System.out.println(root.val);
-            max_level = level;
+    public static void getPath(TreeNode root, int val, String tempPath) {
+        if (root == null) return;
+        tempPath = tempPath + "->" + root.val;
+        if (root.val == val) {
+            System.out.println(tempPath);
+            return;
         }
-        getLeftView(root.left, level+1);
-        getLeftView(root.right, level+1);
+        getPath(root.left, val, tempPath);
+        getPath(root.right, val, tempPath);
+        if (!tempPath.contains("->")) {
+            tempPath.substring(0, tempPath.indexOf("->"));
+        }
     }
+
+
 
 
 

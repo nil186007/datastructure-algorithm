@@ -1,9 +1,6 @@
 package com.code.nil.preparation.striver.tree;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.List;
+import java.util.*;
 
 public class LevelOdertraversals {
 
@@ -64,18 +61,25 @@ public class LevelOdertraversals {
         }
     }
 
-    public static void iterativePostOrderTraversal(TreeNode root) {
+    private void postOrderIterative(TreeNode root) {
+        Stack<TreeNode> stack = new Stack<>();
+        while(true) {
+            while(root != null) {
+                stack.push(root);
+                stack.push(root);
+                root = root.left;
+            }
+            // Check for empty stack
+            if(stack.empty()) return;
+            root = stack.pop();
 
-        if (root == null) {
-            return;
-        }
-        Deque<TreeNode> nodes = new ArrayDeque<>();
-        nodes.push(root);
-        while (!nodes.isEmpty()) {
-            TreeNode currentNode = nodes.pop();
-            System.out.println(currentNode.val);
-            if(currentNode.left!=null) nodes.push(currentNode.left);
-            if(currentNode.right!=null) nodes.push(currentNode.right);
+            if(!stack.empty() && stack.peek() == root) root = root.right;
+
+            else {
+
+                System.out.print(root.val + " ");
+                root = null;
+            }
         }
     }
 
@@ -93,6 +97,6 @@ public class LevelOdertraversals {
         root.right.right = new TreeNode(7);
 
         //System.out.println(spiraltraversal(root));
-        iterativePostOrderTraversal(root);
+        //iterativePostOrderTraversal(root);
     }
 }

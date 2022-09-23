@@ -1,5 +1,9 @@
 package com.code.nil.preparation.striver.array;
 
+import java.util.Comparator;
+import java.util.PriorityQueue;
+import java.util.Queue;
+
 public class MinJumpArray {
 
     public static void main(String[] args) {
@@ -22,6 +26,8 @@ public class MinJumpArray {
 
         }
         System.out.println(jump);
+
+        Queue<String> a = new PriorityQueue<>(Comparator.reverseOrder());
 
 
     }
